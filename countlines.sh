@@ -1,0 +1,1 @@
+for file in $@; do NLINES=$( cat $file | wc -l); if [[ $NLINES -gt 1 ]]; then echo $file has $NLINES lines; elif [[ $NLINES -eq 1 ]]; then echo $file has $NLINES line; else echo $file is empty; fi; done
