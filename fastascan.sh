@@ -29,7 +29,7 @@ for FILE in $FILES; do echo
 	if [[ -h $FILE ]]; then SYM="SYMLINK"; else SYM="NOT SYMLINK"; fi 
 
 	# count lines starting by > (number of sequences):
-	NSEQ=$(awk '/^>/{nseq+=1} END{print nseq}' $FILE) # wc adds a lot of spaces in output
+	NSEQ=$(awk '/^>/{nseq+=1} END{print nseq}' $FILE) 
 
 	### 
 	SEQ=$(awk '!/^>/{gsub(/[ -]/, ""); seq=seq $0} END{print seq}' $FILE)
@@ -45,7 +45,7 @@ for FILE in $FILES; do echo
 
 	# FILE CONTENT
 	if [[ $N -eq 0 ]]; then continue; fi
-	if [[ $(cat $FILE| wc -l) -le $((2*$N)) ]]; then cat $FILE; echo
-	else head -n $N $FILE; echo …; tail -n $N $FILE; echo
+	if [[ $(cat $FILE| wc -l) -le $((2*$N)) ]]; then cat $FILE
+	else head -n $N $FILE; echo …; tail -n $N $FILE
 	fi
 done
